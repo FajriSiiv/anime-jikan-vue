@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme{
+    --color-primary: #000814; /* Background Utama */
+    --color-secondary: #161a1d; /* Card & Navbar */
+    --color-accent: #00FF41; /* Biru Cerah (Action) */
+    --color-highlight: #E85D75; /* Pink (Favorit/Hot) */
+    --color-soft-text: #9FADBD; /* Teks Deskripsi */
+    --color-font-text: #F0F0F0; /* Teks */
+    --color-font-support: #4ADE80; /* Teks Pendukung */
+    --default-font-family: Roboto Mono, serif;
+    --font-poppins: Poppins, sans-serif;
+}
+
+
+
+body{
+    font-family: Roboto Mono, serif;
+}
