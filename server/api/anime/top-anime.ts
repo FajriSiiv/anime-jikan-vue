@@ -7,6 +7,7 @@ type AnimeTypeProps = {
     genres: {
         name: string;
     }[];
+    type:string
 }
 
 export default defineCachedEventHandler(async (event) => {
@@ -19,8 +20,9 @@ export default defineCachedEventHandler(async (event) => {
             title: item.title,
             score: item.score,  
             imageUrl: item.images.webp.large_image_url,
-             description:item.synopsis,
-            genres:item.genres.map((genre: { name: string }) => genre.name)
+            description:item.synopsis,
+            genres:item.genres.map((genre: { name: string }) => genre.name),
+            type:item.type
         }));
     } catch (error) {
         throw createError({ statusCode: 500, statusMessage: 'Failed to fetch from Jikan API' });
