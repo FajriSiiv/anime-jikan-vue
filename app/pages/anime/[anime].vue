@@ -2,6 +2,9 @@
 const { anime } = useRoute().params
 const { data: animeDetail, pending: animeDetailPending, error: animeDetailError } = await useFetch(`/api/anime/detail/${anime}`)
 
+const { data: animeCharacters, pending: animeCharactersPending, error: animeCharactersError } = await useFetch(`/api/anime/characters/${anime}`)
+
+
 const flatRelations = computed(() => {
     if (!animeDetail.value?.relations) return []
 
@@ -216,9 +219,28 @@ const hasMoreRelations = computed(() => flatRelations.value.length > 20)
                             </div>
 
                         </div>
+
+                        <div class="flex flex-col gap-3">
+                            <p>Characters</p>
+                            <div v-if="animeCharactersPending">
+                                <p>Loading...</p>
+                            </div>
+                            <div v-else-if="animeCharactersError">
+                                <p>Error: {{ animeCharactersError }}</p>
+                            </div>
+                            <div v-else-if="animeCharacters" class="grid grid-cols-5 gap-2">
+                                <div v-for="character in animeCharacters.slice(0, 10)" :key="character.mal_id"
+                                    class="flex flex-col gap-2 p-2 bg-secondary rounded-md">
+                                    <p>{{ character.name }}</p>
+                                    <p>{{ character.role }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </template>

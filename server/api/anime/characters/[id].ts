@@ -1,6 +1,6 @@
 
 const getCachedAnime = defineCachedFunction(async (id: string) => {
-  const url = `https://api.jikan.moe/v4/anime/${id}/full`
+  const url = `https://api.jikan.moe/v4/anime/${id}/characters`
   
   const response = await $fetch<{ data: any }>(url, {
     method: 'GET',
@@ -11,7 +11,7 @@ const getCachedAnime = defineCachedFunction(async (id: string) => {
   return response.data
 }, {
   maxAge: 60 * 60, // Cache 1 jam
-  name: 'animeDetail',
+  name: 'animeCharacters',
   getKey: (id: string) => id
 })
 
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     if (!data) {
       throw createError({
         statusCode: 404,
-        statusMessage: 'Anime Not Found',
+        statusMessage: 'Anime Characters Not Found',
       })
     }
 
