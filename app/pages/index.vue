@@ -13,7 +13,7 @@ const { data: airingTopAnime, pending: airingTopAnimePending, error: airingTopAn
                         container: 'h-[350px] overflow-hidden'
                     }">
                     <div
-                        class="absolute bottom-0 left-0 inset-0 z-10 bg-linear-to-t from-black/80 via-black/80 via-50% to-black/5 h-[350px]">
+                        class="absolute bottom-0 left-0 top-0 right-0 z-10 bg-linear-to-t from-black/80 via-black/80 via-50% to-black/5 h-[350px]">
                     </div>
                     <img :src="item.imageUrl" alt="anime"
                         class="w-full h-full object-cover object-[50%_30%] absolute left-0 top-0 blur-xs">
@@ -42,17 +42,7 @@ const { data: airingTopAnime, pending: airingTopAnimePending, error: airingTopAn
             <div class="mt-10"></div>
         </div>
         <div class="col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="flex flex-col gap-2 w-full min-h-[640px]">
-                <BaseHighlightText text="Announcements" class="text-sm" />
-                <div
-                    class="p-4 flex font-poppins text-sm flex-col gap-2 rounded-sm text-white/50 bg-secondary max-w-[80%] leading-[1.35]">
-                    <p>
-                        Welcome to our new website! We are excited to have you here and hope you enjoy your time with
-                        us.
-                    </p>
-                    <span>Enjoy your time with us!</span>
-                </div>
-            </div>
+            <HomepageSidebar />
         </div>
 
     </div>
